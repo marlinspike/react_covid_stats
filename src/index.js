@@ -12,7 +12,6 @@ ReactDOM.render(
   <React.StrictMode>
     <NavBody />
     <App />
-    <StatsTable />
   </React.StrictMode>,
   document.getElementById("root")
 );

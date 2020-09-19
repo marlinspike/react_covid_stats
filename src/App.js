@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import logo from './logo.svg';
 import './App.css';
 import Stats_Header from "./Stats_Header";
-import Stats_Table from "./Stats_Table";
+import StatsTable from "./Stats_Table";
 
 function App(props) {
   const [global_confirmed, set_global_confirmed] = useState("Loading...");
@@ -31,6 +31,7 @@ function App(props) {
           global_last_updated={global_last_updated}
         />
       </center>
+      <StatsTable/>
     </React.Fragment>
   );
 }
@@ -46,5 +47,7 @@ async function getHeroStats() {
     'https://coronastats.azurewebsites.net/api/CoronaStats?code=rT0lgGuJG6Mkwayxeawg0Pjq9WeUMKZ1/fQTFoOgelcLCuGWjl31zg=='
   )).json();
 }
+
+
 
 export default App;

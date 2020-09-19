@@ -3,56 +3,58 @@ import TableRow from './TableRow'
 
 function StatsTable(props) {
     const [data, set_data] = useState([]);
+    const [sort, set_sort] = useState("active")
+    const [repaint, set_repaint] = useState(false);
+    
     let table_data = "";
 
     useEffect(() => {
-      getStatsTable().then((res) => {
+      getStatsTable(sort).then((res) => {
         console.log(res);
-        set_data(res);
+          set_data(res);
       });
-    }, []);
+    }, [sort]);
 
     for (var i = 0; i < data.length; i++){
         table_data += data[i].id
     }
-
-    
     
     return (
       <React.Fragment>
         <table className="table table-striped table-bordered">
           <tbody>
-            <tr>
-              <th>Country</th>
-              <th>Cases</th>
-              <th>Cases Today</th>
-              <th>Deaths</th>
-              <th>Deaths Today</th>
-              <th>Recovered</th>
-              <th>Active</th>
-              <th>Critical</th>
-              <th>Cases Per Million</th>
+            <tr className="sortable">
+            <th onClick={() => { set_sort("country"); }}>Country</th>
+              <th onClick={() => { set_sort("cases"); }}>Cases</th>
+              <th onClick={() => { set_sort("todayCases");  }}>Cases Today</th>
+              <th onClick={() => { set_sort("deaths");  }}>Deaths</th>
+              <th onClick={() => { set_sort("todayDeaths");  }}>Deaths Today</th>
+              <th onClick={() => { set_sort("recovered");  }}>Recovered</th>
+              <th onClick={() => { set_sort("active");  }}>Active</th>
+              <th onClick={() => { set_sort("critical");  }}>Critical</th>
+              <th onClick={() => { set_sort("casesPerOneMillion");  }}>Cases Per Million</th>
             </tr>
           </tbody>
 
           {data.map((item, i) => {
-              return (
-                <React.Fragment>
-                  <TableRow
-                    country={item.country}
-                    flag={item.countryInfo.flag}
-                    cases={Number(item.cases).toLocaleString()}
-                    todayCases={Number(item.todayCases).toLocaleString()}
-                    todayDeaths={Number(item.todayDeaths).toLocaleString()}
-                    recovered={Number(item.recovered).toLocaleString()}
-                    active={Number(item.active).toLocaleString()}
-                    critical={Number(item.critical).toLocaleString()}
-                    casesPerOneMillion={Number(
-                      item.casesPerOneMillion
-                    ).toLocaleString()}
-                  />
-                </React.Fragment>
-              );
+            return (
+              <React.Fragment>
+                <TableRow
+                  flag={item.countryInfo.flag}
+                  country={item.country}
+                  cases={Number(item.cases).toLocaleString()}
+                  deaths={Number(item.deaths).toLocaleString()}
+                  todayCases={Number(item.todayCases).toLocaleString()}
+                  todayDeaths={Number(item.todayDeaths).toLocaleString()}
+                  recovered={Number(item.recovered).toLocaleString()}
+                  active={Number(item.active).toLocaleString()}
+                  critical={Number(item.critical).toLocaleString()}
+                  casesPerOneMillion={Number(
+                    item.casesPerOneMillion
+                  ).toLocaleString()}
+                />
+              </React.Fragment>
+            );
           })}
         </table>
       </React.Fragment>
@@ -75,10 +77,10 @@ function StatsTable(props) {
                   </tr>
 */
 
-async function getStatsTable() {
-  console.log("in getStatsTable");
+async function getStatsTable(sort) {
+  console.log(`Sorting By: ${sort}`);
   return await (
-    await (await fetch("https://corona.lmao.ninja/v2/countries?sort=active")).json()
+    await (await fetch(`https://corona.lmao.ninja/v2/countries?sort=${sort}`)).json()
   );
 }
 
