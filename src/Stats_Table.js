@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import TableRow from './TableRow'
 
 function StatsTable(props) {
     const [data, set_data] = useState([]);
@@ -35,24 +36,44 @@ function StatsTable(props) {
           </tbody>
 
           {data.map((item, i) => {
-            return (
-              <tr>
-                <th><img src={item.countryInfo.flag} height="15"/>&nbsp;&nbsp;{item.country}</th>
-                <th>{Number(item.cases).toLocaleString()}</th>
-                <th>{Number(item.todayCases).toLocaleString()}</th>
-                <th>{Number(item.deaths).toLocaleString()}</th>
-                <th>{Number(item.todayDeaths).toLocaleString()}</th>
-                <th>{Number(item.recovered).toLocaleString()}</th>
-                <th>{Number(item.active).toLocaleString()}</th>
-                <th>{Number(item.critical).toLocaleString()}</th>
-                <th>{Number(item.casesPerOneMillion).toLocaleString()}</th>
-              </tr>
-            );
+              return (
+                <React.Fragment>
+                  <TableRow
+                    country={item.country}
+                    flag={item.countryInfo.flag}
+                    cases={Number(item.cases).toLocaleString()}
+                    todayCases={Number(item.todayCases).toLocaleString()}
+                    todayDeaths={Number(item.todayDeaths).toLocaleString()}
+                    recovered={Number(item.recovered).toLocaleString()}
+                    active={Number(item.active).toLocaleString()}
+                    critical={Number(item.critical).toLocaleString()}
+                    casesPerOneMillion={Number(
+                      item.casesPerOneMillion
+                    ).toLocaleString()}
+                  />
+                </React.Fragment>
+              );
           })}
         </table>
       </React.Fragment>
     );
 }
+/*
+                  <tr>
+                    <th>
+                      <img src={item.countryInfo.flag} height="15" />
+                      &nbsp;&nbsp;{item.country}
+                    </th>
+                    <th>{Number(item.cases).toLocaleString()}</th>
+                    <th>{Number(item.todayCases).toLocaleString()}</th>
+                    <th>{Number(item.deaths).toLocaleString()}</th>
+                    <th>{Number(item.todayDeaths).toLocaleString()}</th>
+                    <th>{Number(item.recovered).toLocaleString()}</th>
+                    <th>{Number(item.active).toLocaleString()}</th>
+                    <th>{Number(item.critical).toLocaleString()}</th>
+                    <th>{Number(item.casesPerOneMillion).toLocaleString()}</th>
+                  </tr>
+*/
 
 async function getStatsTable() {
   console.log("in getStatsTable");
