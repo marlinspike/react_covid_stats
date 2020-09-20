@@ -1,3 +1,8 @@
+## See it live at these URLs:
+- [Covid19.cleet.us](http://covid19.cleet.us/)
+- [Azure Blob Storage Hosted App](https://reuben.z13.web.core.windows.net/)
+
+
 ## A React COVID-19 Dashboard
 This React App draws data from Johns Hopkins global dataset to create a simple world chart dashboard for COVID. Originally published in February 2020 (using Vue at the time), this was one of the early Covid dashboards available. It's now been rebuilt in React as a learning tool for what I think is a better overall JavaScript library for web apps.
 
