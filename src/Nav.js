@@ -14,16 +14,14 @@ function NavBody() {
     <ul className="navbar-nav mr-auto">
       <li className="nav-item">
         <a className="nav-link" href="index.html">Home <span className="sr-only">(current)</span></a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
+              </li>
+
       <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <a className="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dashboards</a>
         <div className="dropdown-menu" aria-labelledby="dropdown01">
-          <a className="dropdown-item" href="#">Action</a>
-          <a className="dropdown-item" href="#">Another action</a>
-          <a className="dropdown-item" href="#">Something else here</a>
+          <a className="dropdown-item" href="https://coronavirus.jhu.edu/map.html">Johns Hopkins World Dashboard</a>
+          <a className="dropdown-item" href="https://covid19.who.int/?gclid=EAIaIQobChMIjv-1p_v36wIVjeSzCh0ejAsdEAAYASAAEgIFyvD_BwE">WHO Global Dashboard</a>
+          <a className="dropdown-item" href="https://www.bing.com/covid/local/unitedstates">Microsoft Bing Dashboard</a>
         </div>
       </li>
     </ul>

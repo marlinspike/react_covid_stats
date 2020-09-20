@@ -9,6 +9,7 @@ function App(props) {
   const [global_deaths, set_global_deaths] = useState("Loading...");
   const [global_recovered, set_global_recovered] = useState("Loading...");
   const [global_last_updated, set_global_last_updated] = useState("Loading...");
+  
 
   useEffect(() => {
     getHeroStats().then((res) => {
@@ -42,9 +43,9 @@ async function getDateTime() {
 
 
 async function getHeroStats() {
-  console.log("in getherostats");
+  const API_Key = process.env.REACT_APP_CORONASTATS_KEY;
   return await (await fetch(
-    'https://coronastats.azurewebsites.net/api/CoronaStats?code=rT0lgGuJG6Mkwayxeawg0Pjq9WeUMKZ1/fQTFoOgelcLCuGWjl31zg=='
+    `https://coronastats.azurewebsites.net/api/CoronaStats?code=${API_Key}`
   )).json();
 }
 

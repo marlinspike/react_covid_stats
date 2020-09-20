@@ -15,9 +15,6 @@ function StatsTable(props) {
       });
     }, [sort]);
 
-    for (var i = 0; i < data.length; i++){
-        table_data += data[i].id
-    }
     
     return (
       <React.Fragment>
@@ -78,7 +75,6 @@ function StatsTable(props) {
 */
 
 async function getStatsTable(sort) {
-  console.log(`Sorting By: ${sort}`);
   return await (
     await (await fetch(`https://corona.lmao.ninja/v2/countries?sort=${sort}`)).json()
   );
