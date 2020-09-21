@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Stats_Header from "./Stats_Header";
 import StatsTable from "./Stats_Table";
+import moment from "moment";
 
 function App(props) {
   const [global_confirmed, set_global_confirmed] = useState("Loading...");
@@ -17,7 +18,7 @@ function App(props) {
       set_global_confirmed(res.confirmed);
       set_global_deaths(res.deaths);
       set_global_recovered(res.recovered);
-      set_global_last_updated(res.last_updated);
+      set_global_last_updated( moment(moment.utc().format('YYYY-MM-DD HH:mm:ss')).local().format('YYYY-MM-DD HH:mm') + " UTC");
     });
   }, []);
 
