@@ -7,6 +7,7 @@ import NavBody from './Nav'
 import Stats_Header from './Stats_Header'
 import StatsTable from './Stats_Table'
 import * as serviceWorker from './serviceWorker';
+import pageFooter from './Footer';
 
 ReactDOM.render(
   <React.StrictMode>

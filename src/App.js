@@ -5,6 +5,7 @@ import Stats_Header from "./Stats_Header";
 import StatsTable from "./Stats_Table";
 import moment from "moment";
 
+
 function App(props) {
   const [global_confirmed, set_global_confirmed] = useState("Loading...");
   const [global_deaths, set_global_deaths] = useState("Loading...");
@@ -33,7 +34,7 @@ function App(props) {
           global_last_updated={global_last_updated}
         />
       </center>
-      <StatsTable/>
+      <StatsTable />
     </React.Fragment>
   );
 }
